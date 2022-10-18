@@ -1,3 +1,5 @@
+library(dplyr)
+
 # Inverse efficiency criterion
 inv_eff <- function(Ez, Exz, Ex2z, Ex2){
   M11 <- 1-Ez^2-Exz^2/Ex2
@@ -363,8 +365,17 @@ z_tilde <- 2 * treat_frac - 1
 xz_max <- get_xz_max(x_cumsum, z_tilde)
 
 # Histogram of x
-par(mfrow=c(1,2))
-hist(x, freq=FALSE, ylab="", breaks=30, main="", xlab="Centered poverty index")
+par(mfrow=c(1,2), mar=c(5,5,4,2))
+hist(x, 
+     freq=FALSE, 
+     ylab="", 
+     breaks=30, 
+     main="", 
+     xlab="Centered poverty index",
+     cex.lab=1.7, 
+     cex.axis=1.7, 
+     cex.main=1.7, 
+     cex.sub=1.7)
 abline(v=x[2505], lty="dashed")
 
 # Compute 3 level tie-breaker designs
@@ -415,11 +426,16 @@ plot(delta_tiebreaker_3,
      ylab=expression(Eff^{-1}),
      type="l",
      col="red",
+     cex.lab=1.7, 
+     cex.axis=1.7, 
+     cex.main=1.7, 
+     cex.sub=1.7,
      lwd=2)
 lines(delta_list, opt_inv_eff, lwd=2, col="blue")
 legend(x="topleft",
-       legend=c("Three level tie-breaker design", 
-                "Optimal monotone two level design"),
+       legend=c("Three level tie-breaker", 
+                "Optimal monotone design"),
        lty="solid",
-       lwd=2,
+       lwd=3,
+       cex=1.7,
        col=c("red", "blue"))

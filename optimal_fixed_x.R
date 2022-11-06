@@ -1,4 +1,4 @@
-library(dplyr)
+library(tidyverse)
 
 # Inverse efficiency criterion
 inv_eff <- function(Ez, Exz, Ex2z, Ex2){
